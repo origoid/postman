@@ -1,0 +1,1363 @@
+{
+  "info": {
+    "_postman_id": "0r1g01d-0000-4a11-b0ss-c0ffee000001",
+    "name": "OrigoID API — Official collection",
+    "description": "Collection generated from OrigoID's canonical OpenAPI. The base URL is https://api.origoid.com (literal in every request, so you can see it and take it straight to your code). It does NOT include your API key: add it yourself in Postman as an `x-api-key: <your-api-key>` header (under each request's Headers tab, or once at the collection level via Authorization → type API Key → add to Header). Includes one request per invocation form for multi-option endpoints (PEPs, OFAC, voter list, CFDI, etc.).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "issueToken — Default lifetime",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/auth/token",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "token"
+              ]
+            },
+            "description": "Generate Bearer Token"
+          }
+        },
+        {
+          "name": "issueToken — Custom lifetime",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expireAfter\": 60\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/auth/token",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "auth",
+                "token"
+              ]
+            },
+            "description": "Generate Bearer Token"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RENAPO",
+      "item": [
+        {
+          "name": "validateCurp",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"TEST900101HDFRRN09\",\n  \"generateRfc\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/renapo/v1/curp-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "renapo",
+                "v1",
+                "curp-validations"
+              ]
+            },
+            "description": "Validate CURP"
+          }
+        },
+        {
+          "name": "lookupCurp",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"givenNames\": \"JUAN\",\n  \"firstSurname\": \"PEREZ\",\n  \"secondSurname\": \"LOPEZ\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"gender\": \"H\",\n  \"birthStateCode\": \"DF\",\n  \"generateRfc\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/renapo/v1/curp-lookups",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "renapo",
+                "v1",
+                "curp-lookups"
+              ]
+            },
+            "description": "Retrieve CURP via Demographics"
+          }
+        },
+        {
+          "name": "extractCurpDocument — By CURP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"TEST900101HDFRRN09\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/renapo/v1/curp-documents",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "renapo",
+                "v1",
+                "curp-documents"
+              ]
+            },
+            "description": "CURP Official Document (PDF)"
+          }
+        },
+        {
+          "name": "extractCurpDocument — By CURP + RFC generation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"TEST900101HDFRRN09\",\n  \"generateRfc\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/renapo/v1/curp-documents",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "renapo",
+                "v1",
+                "curp-documents"
+              ]
+            },
+            "description": "CURP Official Document (PDF)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Social Security",
+      "item": [
+        {
+          "name": "lookupImssNss",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"ALMR900805HDFRZA09\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-nss-lookups",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-nss-lookups"
+              ]
+            },
+            "description": "Get NSS"
+          }
+        },
+        {
+          "name": "getImssEmploymentStatus",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"GARM900101HDFRZA01\",\n  \"nss\": \"92038109713\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-employment-status",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-employment-status"
+              ]
+            },
+            "description": "Employment Status"
+          }
+        },
+        {
+          "name": "getIssteRecord — By CURP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"GOTM850312MDFMRX05\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/issste-records",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "issste-records"
+              ]
+            },
+            "description": "ISSSTE Record"
+          }
+        }
+      ]
+    },
+    {
+      "name": "INE",
+      "item": [
+        {
+          "name": "validateVoterList — Option 1 — CIC + voter key",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cic\": \"123456789\",\n  \"citizenIdentifier\": \"987654321\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/id/v1/voter-list-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "id",
+                "v1",
+                "voter-list-validations"
+              ]
+            },
+            "description": "Validate Voter List"
+          }
+        },
+        {
+          "name": "validateVoterList — Option 2 — CIC + OCR",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cic\": \"123456789\",\n  \"ocr\": \"0123456789012\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/id/v1/voter-list-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "id",
+                "v1",
+                "voter-list-validations"
+              ]
+            },
+            "description": "Validate Voter List"
+          }
+        },
+        {
+          "name": "extractVoterIdData",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"front\": \"<base64 — JPG or PNG>\",\n  \"back\": \"<base64 — JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/id/v1/voter-id-extractions",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "id",
+                "v1",
+                "voter-id-extractions"
+              ]
+            },
+            "description": "ID Data Extraction (OCR & Geocoding)"
+          }
+        },
+        {
+          "name": "extractQrData",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"back\": \"<base64 — JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/id/v1/qr-extractions",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "id",
+                "v1",
+                "qr-extractions"
+              ]
+            },
+            "description": "INE QR Code Data Extraction"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Biometrics",
+      "item": [
+        {
+          "name": "matchFaces",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"face\": \"<base64 — JPG or PNG>\",\n  \"front\": \"<base64 — JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/biometrics/v1/face-matches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "biometrics",
+                "v1",
+                "face-matches"
+              ]
+            },
+            "description": "Global Biometric Face Match"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Compliance",
+      "item": [
+        {
+          "name": "searchSat69 — By Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"JUAN PEREZ LOPEZ\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/sat-69-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "sat-69-searches"
+              ]
+            },
+            "description": "SAT Article 69 Check"
+          }
+        },
+        {
+          "name": "searchSat69 — By RFC",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rfc\": \"PELJ900101AAA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/sat-69-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "sat-69-searches"
+              ]
+            },
+            "description": "SAT Article 69 Check"
+          }
+        },
+        {
+          "name": "searchSat69b — By Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"JUAN PEREZ LOPEZ\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/sat-69b-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "sat-69b-searches"
+              ]
+            },
+            "description": "SAT Article 69-B Check (EFOS)"
+          }
+        },
+        {
+          "name": "searchSat69b — By RFC",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rfc\": \"PELJ900101AAA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/sat-69b-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "sat-69b-searches"
+              ]
+            },
+            "description": "SAT Article 69-B Check (EFOS)"
+          }
+        },
+        {
+          "name": "searchOfac — Name only (basic)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"JOAQUIN GUZMAN LOERA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/compliance/v1/ofac-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "compliance",
+                "v1",
+                "ofac-searches"
+              ]
+            },
+            "description": "OFAC Sanctions List Check"
+          }
+        },
+        {
+          "name": "searchOfac — Name + passport (cross-border KYC)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Abu Sufian al-Salamabi Muhammed Ahmed Abd al-Razziq\",\n  \"passportNumber\": \"BC166787\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/compliance/v1/ofac-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "compliance",
+                "v1",
+                "ofac-searches"
+              ]
+            },
+            "description": "OFAC Sanctions List Check"
+          }
+        },
+        {
+          "name": "searchOfac — Name + national ID (cross-border KYC)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"JOAQUIN GUZMAN LOERA\",\n  \"nationalIdNumber\": \"BC166787\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/compliance/v1/ofac-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "compliance",
+                "v1",
+                "ofac-searches"
+              ]
+            },
+            "description": "OFAC Sanctions List Check"
+          }
+        },
+        {
+          "name": "searchPeps — By single name (basic)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ANDRES MANUEL LOPEZ OBRADOR\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/peps-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "peps-searches"
+              ]
+            },
+            "description": "PEP (Politically Exposed Person) Check"
+          }
+        },
+        {
+          "name": "searchPeps — By separated name (recommended for best match)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"givenNames\": \"ANDRES MANUEL\",\n  \"firstSurname\": \"LOPEZ\",\n  \"secondSurname\": \"OBRADOR\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/peps-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "peps-searches"
+              ]
+            },
+            "description": "PEP (Politically Exposed Person) Check"
+          }
+        },
+        {
+          "name": "searchPeps — By separated name + CURP (highest confidence)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"givenNames\": \"ANDRES MANUEL\",\n  \"firstSurname\": \"LOPEZ\",\n  \"secondSurname\": \"OBRADOR\",\n  \"nationalIdNumber\": \"LOOA531113HTCPBN07\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/peps-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "peps-searches"
+              ]
+            },
+            "description": "PEP (Politically Exposed Person) Check"
+          }
+        },
+        {
+          "name": "searchPeps — By single name + RFC",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ANDRES MANUEL LOPEZ OBRADOR\",\n  \"nationalIdNumber\": \"LOOA531113FI5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/peps-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "peps-searches"
+              ]
+            },
+            "description": "PEP (Politically Exposed Person) Check"
+          }
+        },
+        {
+          "name": "searchPeps — By identifier only (CURP)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nationalIdNumber\": \"LOOA531113HTCPBN07\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/compliance/v1/peps-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "compliance",
+                "v1",
+                "peps-searches"
+              ]
+            },
+            "description": "PEP (Politically Exposed Person) Check"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Email",
+      "item": [
+        {
+          "name": "validateEmail",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/email/v1/email-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "email",
+                "v1",
+                "email-validations"
+              ]
+            },
+            "description": "Email Deliverability & Fraud Validation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proof of Address",
+      "item": [
+        {
+          "name": "extractProofOfAddress",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file\": \"<base64 — PDF, JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/documents/v1/proof-of-address-extractions",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "documents",
+                "v1",
+                "proof-of-address-extractions"
+              ]
+            },
+            "description": "Universal Extraction (Proof of Address)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fiscal",
+      "item": [
+        {
+          "name": "validateRfc",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rfc\": \"GARM900101HDF\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/fiscal/v1/rfc-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "fiscal",
+                "v1",
+                "rfc-validations"
+              ]
+            },
+            "description": "RFC Status and LCO Validation"
+          }
+        },
+        {
+          "name": "extractCsf — By RFC + CIF",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rfc\": \"PELJ900101AAA\",\n  \"cif\": \"12345678901\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/fiscal/v1/csf-extractions",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "fiscal",
+                "v1",
+                "csf-extractions"
+              ]
+            },
+            "description": "CSF Data Extraction & Validation (Multi-input)"
+          }
+        },
+        {
+          "name": "extractCsf — By document (base64 PDF/PNG/JPG)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document\": \"<base64 — PDF, JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/fiscal/v1/csf-extractions",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "fiscal",
+                "v1",
+                "csf-extractions"
+              ]
+            },
+            "description": "CSF Data Extraction & Validation (Multi-input)"
+          }
+        },
+        {
+          "name": "validateCfdi — Option 1 — by data (UUID + RFCs + total)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"7C8BD4EA-AE86-4CB5-88B8-C6E61E988A8B\",\n  \"rfcEmisor\": \"PEZJ811011KI1\",\n  \"rfcReceptor\": \"EMP170623KI3\",\n  \"total\": \"999999.99\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/fiscal/v1/cfdi-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "fiscal",
+                "v1",
+                "cfdi-validations"
+              ]
+            },
+            "description": "Validate CFDI (Electronic Invoice)"
+          }
+        },
+        {
+          "name": "validateCfdi — Option 2 — by document (base64, with SAT QR)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document\": \"<base64 — XML, PDF, JPG or PNG (with SAT QR)>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/fiscal/v1/cfdi-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "fiscal",
+                "v1",
+                "cfdi-validations"
+              ]
+            },
+            "description": "Validate CFDI (Electronic Invoice)"
+          },
+          "response": [
+            {
+              "name": "DOCUMENT_NOT_TRUSTED — QR points to an unofficial host",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"document\": \"<base64 — XML, PDF, JPG or PNG (with SAT QR)>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.origoid.com/mex/fiscal/v1/cfdi-validations",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "origoid",
+                    "com"
+                  ],
+                  "path": [
+                    "mex",
+                    "fiscal",
+                    "v1",
+                    "cfdi-validations"
+                  ]
+                },
+                "description": "Validate CFDI (Electronic Invoice)"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"type\": \"DOCUMENT_NOT_TRUSTED\",\n  \"message\": \"Document QR points to an unofficial host\",\n  \"data\": null,\n  \"transactionId\": \"fake-v4\",\n  \"processedAt\": \"2026-06-26T16:34:30-06:00\",\n  \"billable\": true\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Banking",
+      "item": [
+        {
+          "name": "validateCep",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingKey\": \"BNET01002026060140000012345\",\n  \"operationDate\": \"2026-06-01\",\n  \"senderBankCode\": \"40012\",\n  \"receiverBankCode\": \"40014\",\n  \"beneficiaryAccount\": \"014180567812345678\",\n  \"amount\": \"1500.00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/banking/v1/cep-validations",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "banking",
+                "v1",
+                "cep-validations"
+              ]
+            },
+            "description": "CEP / SPEI Payment Validation"
+          }
+        }
+      ]
+    }
+  ]
+}
