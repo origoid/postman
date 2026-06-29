@@ -1264,56 +1264,7 @@
               ]
             },
             "description": "Validate CFDI (Electronic Invoice)"
-          },
-          "response": [
-            {
-              "name": "DOCUMENT_NOT_TRUSTED — QR points to an unofficial host",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"document\": \"<base64 — XML, PDF, JPG or PNG (with SAT QR)>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "https://api.origoid.com/mex/fiscal/v1/cfdi-validations",
-                  "protocol": "https",
-                  "host": [
-                    "api",
-                    "origoid",
-                    "com"
-                  ],
-                  "path": [
-                    "mex",
-                    "fiscal",
-                    "v1",
-                    "cfdi-validations"
-                  ]
-                },
-                "description": "Validate CFDI (Electronic Invoice)"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"OK\",\n  \"type\": \"DOCUMENT_NOT_TRUSTED\",\n  \"message\": \"Document QR points to an unofficial host\",\n  \"data\": null,\n  \"transactionId\": \"9a4c1e77-2b3d-4f8a-bc1e-6d5f0a2b3c4d\",\n  \"processedAt\": \"2026-06-26T16:34:30-06:00\",\n  \"billable\": true\n}"
-            }
-          ]
+          }
         }
       ]
     },
