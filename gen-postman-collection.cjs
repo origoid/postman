@@ -24,9 +24,9 @@ const CRAFTED = {
     { name: "Option 2 — CIC + OCR", body: { cic: "123456789", ocr: "0123456789012" } },
   ],
   "/mex/fiscal/v1/cfdi-validations": [
-    { name: "Option 1 — by data (UUID + RFCs + total)", body: { uuid: "7C8BD4EA-AE86-4CB5-88B8-C6E61E988A8B", rfcEmisor: "PEZJ811011KI1", rfcReceptor: "EMP170623KI3", total: "999999.99" } },
+    { name: "Option 1 — by data (UUID + RFCs + total)", body: { uuid: "7C8BD4EA-AE86-4CB5-88B8-C6E61E988A8B", rfcIssuer: "PEZJ900514H2A", rfcReceiver: "EMP210908DT4", total: "18750.00" } },
     { name: "Option 2 — by document (base64, with SAT QR)", body: { document: "<base64 — XML, PDF, JPG or PNG (with SAT QR)>" },
-      responses: [{ name: "DOCUMENT_NOT_TRUSTED — QR points to an unofficial host", body: { status: "OK", type: "DOCUMENT_NOT_TRUSTED", message: "Document QR points to an unofficial host", data: null, transactionId: "fake-v4", processedAt: "2026-06-26T16:34:30-06:00", billable: true } }] },
+      responses: [{ name: "DOCUMENT_NOT_TRUSTED — QR points to an unofficial host", body: { status: "OK", type: "DOCUMENT_NOT_TRUSTED", message: "Document QR points to an unofficial host", data: null, transactionId: "9a4c1e77-2b3d-4f8a-bc1e-6d5f0a2b3c4d", processedAt: "2026-06-26T16:34:30-06:00", billable: true } }] },
   ],
 };
 
