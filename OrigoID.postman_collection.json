@@ -542,6 +542,43 @@
             },
             "description": "Global Biometric Face Match"
           }
+        },
+        {
+          "name": "checkLiveness",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"selfie\": \"<base64 — JPG or PNG>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/global/biometrics/v1/liveness-checks",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "global",
+                "biometrics",
+                "v1",
+                "liveness-checks"
+              ]
+            },
+            "description": "Liveness Detection"
+          }
         }
       ]
     },
