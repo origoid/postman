@@ -1,28 +1,10 @@
 # OrigoID — Postman collection
 
-Carpeta independiente de la colección Postman oficial de OrigoID. Vive aparte
-(NO dentro de mintlify) para que sea fácil de mantener y no se pierda.
+Official Postman collection for the OrigoID API — identity verification for Mexico: CURP (RENAPO), INE voter list and OCR, RFC / CSF / CFDI (SAT), NSS (IMSS), ISSSTE, OFAC / PEPs / SAT 69-B screening, proof of address, email validation and face match. 22 endpoints, 35 requests (one per input form), generated from the OpenAPI specification.
 
-## Archivos
-- `OrigoID.postman_collection.json` — colección generada (NO editar a mano).
-- `gen-postman-collection.cjs` — generador. Lee `../documentaciones/openapi.json`.
+**Import:** in Postman → *Import* → paste `https://raw.githubusercontent.com/origoid/postman/main/OrigoID.postman_collection.json`. Add your API key as the `x-api-key` header (collection → Authorization → API Key). Guide: https://docs.origoid.com/es/sdks/postman (English: https://docs.origoid.com/en/sdks/postman).
 
-## Regenerar
-Tras cualquier cambio del OpenAPI:
+**En español** — Colección oficial de Postman de la API de OrigoID (verificación de identidad en México: CURP, INE, RFC/SAT, IMSS, OFAC/PEPs, comparación facial). Importa la URL anterior en Postman y agrega tu API key en el header `x-api-key`.
 
-```
-node gen-postman-collection.cjs
-```
-
-## Qué produce
-- 1 request por cada forma de invocación de los endpoints multi-opción
-  (examples nombrados del openapi: PEPs, OFAC, etc.) + craft para los oneOf
-  sin examples (voter-list, cfdi).
-- URL base literal `https://api.origoid.com` en cada request.
-- SIN API key embebida (el usuario agrega su `x-api-key` en Postman).
-- Endpoints `x-hidden` (ej. checkLiveness) se excluyen.
-- Campos binarios con placeholder uniforme `<base64 — ...>`.
-
-## Publicación / descarga en docs
-Pendiente decidir el host público del archivo para el link de descarga de
-docs.origoid.com (repo propio público vs S3/CloudFront). Ver hilo.
+- Documentation: https://docs.origoid.com · Status: https://status.origoid.com · Support: support@origoid.com
+- `OrigoID.postman_collection.json` is generated — do not edit by hand; regenerate with `node gen-postman-collection.cjs` from the canonical OpenAPI.
