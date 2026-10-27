@@ -275,6 +275,43 @@
           }
         },
         {
+          "name": "createImssNssLookupAsync",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"ALMR900805HDFRZA09\",\n  \"webhook\": {\n    \"url\": \"https://your-domain.com/hooks/origoid\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-nss-lookup-async",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-nss-lookup-async"
+              ]
+            },
+            "description": "Get NSS (Async)"
+          }
+        },
+        {
           "name": "getImssEmploymentStatus",
           "request": {
             "method": "POST",
@@ -309,6 +346,117 @@
               ]
             },
             "description": "Employment Status"
+          }
+        },
+        {
+          "name": "createImssEmploymentStatusAsync",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"GARM900101HDFRZA01\",\n  \"nss\": \"92038109713\",\n  \"includePdf\": true,\n  \"webhook\": {\n    \"url\": \"https://your-domain.com/hooks/origoid\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-employment-status-async",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-employment-status-async"
+              ]
+            },
+            "description": "Employment Status (Async)"
+          }
+        },
+        {
+          "name": "createImssContributionWeeks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"RATL850312HDFMRS07\",\n  \"webhook\": {\n    \"url\": \"https://your-domain.com/hooks/origoid\",\n    \"headers\": {\n      \"Authorization\": \"Bearer YOUR_WEBHOOK_TOKEN\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-contribution-weeks",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-contribution-weeks"
+              ]
+            },
+            "description": "Contribution Weeks"
+          }
+        },
+        {
+          "name": "getImssContributionWeeksResult",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"975cf12f-f270-51cc-9037-d710134940c9\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/social-security/v1/imss-contribution-weeks-results",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "social-security",
+                "v1",
+                "imss-contribution-weeks-results"
+              ]
+            },
+            "description": "Contribution Weeks Result"
           }
         },
         {
