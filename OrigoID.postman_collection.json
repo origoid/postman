@@ -1494,6 +1494,122 @@
           }
         }
       ]
+    },
+    {
+      "name": "Education",
+      "item": [
+        {
+          "name": "searchProfessionalLicenses — By license number",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licenseNumber\": \"9876543\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/education/v1/professional-license-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "education",
+                "v1",
+                "professional-license-searches"
+              ]
+            },
+            "description": "Professional License Search"
+          }
+        },
+        {
+          "name": "searchProfessionalLicenses — By CURP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"curp\": \"RASF900101MBCMLR09\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/education/v1/professional-license-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "education",
+                "v1",
+                "professional-license-searches"
+              ]
+            },
+            "description": "Professional License Search"
+          }
+        },
+        {
+          "name": "searchProfessionalLicenses — By name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"givenNames\": \"JOSE LUIS\",\n  \"firstSurname\": \"HERNANDEZ\",\n  \"secondSurname\": \"MENDOZA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.origoid.com/mex/education/v1/professional-license-searches",
+              "protocol": "https",
+              "host": [
+                "api",
+                "origoid",
+                "com"
+              ],
+              "path": [
+                "mex",
+                "education",
+                "v1",
+                "professional-license-searches"
+              ]
+            },
+            "description": "Professional License Search"
+          }
+        }
+      ]
     }
   ]
 }
